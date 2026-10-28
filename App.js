@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
-import * as NavigationBar from 'expo-navigation-bar';
+import { NavigationBar } from 'expo-navigation-bar';
 
 import { colors } from './src/theme/colors';
 import { MomCareProvider } from './src/data/MomCareContext';
@@ -31,12 +31,6 @@ const TAB_ICONS = {
 export default function App() {
   useEffect(() => {
     (async () => {
-      if (Platform.OS === 'android') {
-        await NavigationBar.setPositionAsync('absolute');
-        await NavigationBar.setBackgroundColorAsync('#FFFBF700');
-        await NavigationBar.setButtonStyleAsync('dark');
-      }
-
       await createReminderNotificationChannel();
       const granted = await requestNotificationPermission();
       if (granted) {
@@ -48,6 +42,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <MomCareProvider>
+        {Platform.OS === 'android' && <NavigationBar style="dark" />}
         <StatusBar style="dark" translucent backgroundColor="transparent" />
         <NavigationContainer>
           <Tab.Navigator

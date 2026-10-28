@@ -5,9 +5,6 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
-    "splash": {
-      "backgroundColor": "#FFFBF7"
-    },
     "androidStatusBar": {
       "barStyle": "dark-content",
       "backgroundColor": "#00000000",
@@ -38,7 +35,14 @@
           "color": "#E8A6A6"
         }
       ],
-      "expo-font"
+      "expo-font",
+      "expo-status-bar",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#FFFBF7"
+        }
+      ]
     ]
   }
 }

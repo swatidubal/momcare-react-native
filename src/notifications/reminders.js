@@ -8,7 +8,8 @@ const REMINDER_IDENTIFIER = 'momcare-daily-reminder';
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
-    shouldShowAlert: true,
+    shouldShowBanner: true,
+    shouldShowList: true,
     shouldPlaySound: false,
     shouldSetBadge: false,
   }),
@@ -54,10 +55,10 @@ export async function scheduleDailyReminder() {
       body: tip,
     },
     trigger: {
+      type: Notifications.SchedulableTriggerInputTypes.DAILY,
       channelId: REMINDER_CHANNEL_ID,
       hour: 10,
       minute: 0,
-      repeats: true,
     },
   });
 }
